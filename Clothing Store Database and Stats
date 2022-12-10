@@ -1,0 +1,32 @@
+--Create a clothing store database
+
+CREATE TABLE clothing_store (style_number integer primary key, name text, quantity integer, cost integer, retail_price integer);
+
+INSERT INTO clothing_store VALUES (51708, "tshirt", 300, 10, 30);
+INSERT INTO clothing_store VALUES (51112, "blouse", 200, 12, 36);
+INSERT INTO clothing_store VALUES (51705, "sweatshirt", 250, 14, 42);
+INSERT INTO clothing_store VALUES (51706, "tank", 300, 8, 24);
+INSERT INTO clothing_store VALUES (51005, "leggings", 300, 8, 24);
+INSERT INTO clothing_store VALUES (26053, "jeans", 200, 18, 54);
+INSERT INTO clothing_store VALUES (21750, "trousers", 200, 14, 42);
+INSERT INTO clothing_store VALUES (47930, "jacket", 200, 14, 42);
+INSERT INTO clothing_store VALUES (20938, "coat", 150, 18, 54);
+INSERT INTO clothing_store VALUES (48092, "beanie", 200, 8, 24);
+INSERT INTO clothing_store VALUES (80937, "gloves", 200, 8, 24);
+INSERT INTO clothing_store VALUES (30958, "socks", 250, 6, 18);
+INSERT INTO clothing_store VALUES (90082, "sneakers", 300, 18, 54);
+INSERT INTO clothing_store VALUES (20930, "heels", 150, 18, 54);
+INSERT INTO clothing_store VALUES (20940, "boots", 200, 18, 54);
+
+
+--display the database ordered by retail price
+
+SELECT * FROM clothing_store ORDER BY retail_price;
+
+--what is the sum of the cost of all of the inventory ordered
+
+SELECT SUM (cost) FROM clothing_store;
+
+--show the range of product costs from least to most expensive per item
+
+SELECT style_number, name, cost FROM clothing_store ORDER BY cost;
