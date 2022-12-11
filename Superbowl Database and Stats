@@ -1,3 +1,5 @@
+--Pull data for all superbowl history
+
 CREATE TABLE superbowls(
 Date      TEXT PRIMARY KEY,
   SB         TEXT,
