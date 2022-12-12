@@ -1,0 +1,52 @@
+--show information about female pop singers
+
+CREATE TABLE Female_Pop_Singers (name text primary key, birth_year integer, age integer, birth_place text, genre text, top_song text);
+
+INSERT INTO Female_Pop_Singers VALUES ("Ariana Grande", 1993, 29, "Boca Raton, Florida, US", "Pop", "7 Rings");
+INSERT INTO Female_Pop_Singers VALUES ("Taylor Swift", 1989, 32, "West Reading, Pennsylvania, US", "Pop", "Blank Space");
+INSERT INTO Female_Pop_Singers VALUES ("Selena Gomez", 1992, 30, "Grand Prairie, Texas, US", "Pop", "Lose You to Love Me");
+INSERT INTO Female_Pop_Singers VALUES ("Dua Lipa", 1995, 27, "London, England, UK", "Pop", "Don't Start Now");
+INSERT INTO Female_Pop_Singers VALUES ("Adele", 1988, 34, "London, England, UK", "Pop", "Easy On Me");
+INSERT INTO Female_Pop_Singers VALUES ("Halsey", 1994, 28, "Edison, New Jersey, US", "Pop", "Bad at Love");
+
+--show pop singers' favorite food
+
+CREATE TABLE Pop_Singers_Favorite_Foods (name text primary key, favorite_food text);
+
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Halsey", "Dippin Dots");
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Selena Gomez", "Pickles");
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Adele", "Sunday Roast");
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Dua Lipa", "Byrek and Pita");
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Taylor Swift", "Chicken and Dumplings");
+INSERT INTO Pop_Singers_Favorite_Foods VALUES ("Ariana Grande", "Salmon");
+
+--show pop singers' favorite drink
+
+CREATE TABLE Pop_Singers_Favorite_Drink (name text primary key, favorite_drink text);
+
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Ariana Grande",
+"Vanilla Bean Frappe");
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Taylor Swift","Caramel Nonfat Latte");
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Adele","Chai Latte");
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Halsey","Coke");
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Dua Lipa","Matcha Latte");
+INSERT INTO Pop_Singers_Favorite_Drink VALUES ("Selena Gomez","Sprite");
+
+--show pop singers and their age and favorite foods
+
+SELECT Female_Pop_Singers.name, Female_Pop_Singers.age, Pop_Singers_Favorite_Foods.favorite_food
+FROM Female_Pop_Singers
+LEFT JOIN Pop_Singers_Favorite_Foods
+ON Female_Pop_Singers.name = Pop_Singers_Favorite_Foods.name
+GROUP BY Female_Pop_Singers.name;
+
+--show pop singers, their top song, their age, and their favorite food and drinks
+
+SELECT Female_Pop_Singers.name, Female_Pop_Singers.top_song, Female_Pop_Singers.age, Pop_Singers_Favorite_Foods.favorite_food, Pop_Singers_Favorite_Drink.favorite_drink
+FROM Female_Pop_Singers
+LEFT OUTER JOIN Pop_Singers_Favorite_Foods
+ON Female_Pop_Singers.name = Pop_Singers_Favorite_Foods.name
+LEFT OUTER JOIN Pop_Singers_Favorite_Drink
+ON Female_Pop_Singers.name = Pop_Singers_Favorite_Drink.name
+GROUP BY Female_Pop_Singers.name;
+
