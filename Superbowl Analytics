@@ -1,0 +1,41 @@
+--In this SQL code, I'm querying a database with NFL superbowl data to answer the questions below.
+
+
+--what are the min amount of points that have won a superbowl?
+
+SELECT MIN (Winner_Pts) 
+FROM superbowls;
+
+--what are the max amount of points that have won a superbowl?
+
+SELECT MAX (Winner_Pts) 
+FROM superbowls;
+
+--what are the average points to win a superbowl?
+
+SELECT AVG (Winner_Pts) 
+FROM superbowls;
+
+--what are the average points of each team that went to the superbowl?
+
+SELECT Winner, AVG(Winner_Pts) 
+AS Avg_Pts 
+FROM superbowls 
+GROUP BY Winner 
+HAVING "Avg_Pts" > 30;
+
+--what teams have above or below average points at the superbowl?
+
+SELECT Winner, Winner_Pts,
+CASE
+WHEN Winner_Pts >30 THEN "Above Average"
+WHEN Winner_Pts <30 THEN "Below Average"
+Else "Average"
+END AS "Pts_ranking"
+FROM superbowls
+GROUP BY Winner;
+
+--what teams have won more than 5 superbowls with total points below average?
+
+SELECT * FROM superbowls GROUP BY Winner HAVING COUNT(*) >=5 AND Winner_Pts <30;
+
