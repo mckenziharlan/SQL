@@ -22,6 +22,8 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL );
 
+--Here I am seeing what kind of data and columns I'm working with to see how to query the data.
+
 SELECT * FROM bit_db.spotifydata;
 
 --Who are the three most popular artists and their top track based on popularity?
