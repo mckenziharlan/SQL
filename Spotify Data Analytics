@@ -1,0 +1,54 @@
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL );
+
+SELECT * FROM bit_db.spotifydata;
+
+--Who are the three most popular artists and their top track based on popularity?
+
+SELECT artist_name, track_name
+FROM bit_db.spotifydata
+ORDER BY popularity DESC
+LIMIT 3;
+
+--What is the shortest song released and by what artist?
+
+SELECT artist_name, track_name
+FROM bit_db.spotifydata
+ORDER BY duration_ms ASC
+LIMIT 1;
+
+--What is the most energetic song?
+
+SELECT track_name
+FROM bit_db.spotifydata
+ORDER BY energy DESC
+LIMIT 1;
+
+--What was the average duration of the top 50 songs?
+
+SELECT AVG(duration_ms)
+FROM bit_db.spotifydata;
+
+--What artists had multiple songs on the top 50 and what were they?
+
+SELECT artist_name
+FROM bit_db.spotifydata
+GROUP BY artist_name
+HAVING COUNT(*) >1;
