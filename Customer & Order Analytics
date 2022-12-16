@@ -1,4 +1,4 @@
---In this SQL, I'm querying data from a customers' orders database and answering the below questions.
+--In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
 
 --How many orders were placed in Januuary?
 
